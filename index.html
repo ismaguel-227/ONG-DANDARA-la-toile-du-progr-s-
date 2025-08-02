@@ -53,24 +53,28 @@
             align-items: center;
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
         }
 
-        .logo img {
+        .logo-container img {
             height: 60px;
             margin-right: 15px;
         }
 
-        .logo h1 {
+        .logo-text h1 {
             font-size: 1.8rem;
             font-weight: 700;
+            margin: 0;
         }
 
-        .logo span {
+        .logo-text h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0;
             color: var(--accent);
-            font-weight: 300;
+            font-style: italic;
         }
 
         nav ul {
@@ -533,6 +537,16 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -564,10 +578,13 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <div class="logo-container">
                 <!-- Logo de DANDARA -->
-                <img src="logo-ong-dandara.png" alt="Logo ONG DANDARA" style="max-width: 300px; height: auto;">
-                <h1>DANDARA <span>"La Toile du Progrès"</span></h1>
+                <img src="logo-ong-dandara.png" alt="Logo ONG DANDARA">
+                <div class="logo-text">
+                    <h1>DANDARA</h1>
+                    <h2>"LA TOILE DU PROGRÈS"</h2>
+                </div>
             </div>
             <button class="mobile-menu-btn" id="menuToggle">
                 <i class="fas fa-bars"></i>
