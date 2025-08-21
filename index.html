@@ -3,127 +3,871 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dandara - La Toile du Progrès</title>
+  <title>DANDARA - La Toile du Progrès</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Réinitialisation et style global */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    :root {
+      --primary: #000;
+      --secondary: #d22b2b;
+      --accent: #fff;
+      --light: #f5f5f5;
+      --dark: #333;
+      --text: #333;
+      --white: #fff;
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: var(--light);
+      color: var(--text);
       line-height: 1.6;
-      margin: 0;
-      padding: 20px;
     }
 
-    /* En-tête */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header */
     header {
-      background: linear-gradient(135deg, #000, #d22b2b);
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    header p {
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    .logo-text h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .logo-text h2 {
       font-size: 1.2rem;
-      opacity: 0.9;
+      font-weight: 400;
+      color: var(--accent);
       font-style: italic;
     }
 
-    /* Section galerie */
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
+    nav ul {
+      display: flex;
+      list-style: none;
     }
 
-    .gallery {
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(210, 43, 43, 0.85)), url('https://images.unsplash.com/photo-1526662092156-02a9d1e2e1f4?ixlib=rb-4.0.3') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
       text-align: center;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      color: var(--white);
     }
 
-    .gallery h2 {
-      color: #2c3e50;
-      margin-bottom: 15px;
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--dark);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent);
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--accent);
+      margin-left: 15px;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent);
+      color: var(--dark);
+    }
+
+    /* About Section */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h3 {
       font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
     }
 
-    .gallery p {
-      color: #555;
-      margin-bottom: 25px;
+    .about-text p {
+      margin-bottom: 1.5rem;
       font-size: 1.1rem;
     }
 
-    .gallery img {
-      max-width: 100%;
+    .about-image {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image img {
+      width: 100%;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
+      display: block;
+      transition: transform 0.5s ease;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
+    .about-image:hover img {
+      transform: scale(1.05);
     }
 
-    /* Pied de page */
-    footer {
+    /* Missions Section */
+    .missions {
+      background-color: var(--light);
+    }
+
+    .missions-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .mission-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mission-icon {
+      background-color: var(--primary);
+      color: var(--white);
+      font-size: 2.5rem;
+      padding: 1.5rem;
       text-align: center;
-      margin-top: 40px;
-      color: #777;
-      font-size: 0.9em;
-      padding: 20px;
     }
 
-    footer a {
-      color: #d22b2b;
+    .mission-content {
+      padding: 2rem;
+    }
+
+    .mission-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .project-content .location {
+      display: flex;
+      align-items: center;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .project-content .location i {
+      margin-right: 5px;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+    }
+
+    .contact .section-title h2 {
+      color: var(--white);
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details {
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item i {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      color: var(--accent);
+    }
+
+    .contact-form {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .footer-column p {
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+      color: var(--dark);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #ddd;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .footer-links a:hover {
+      color: var(--accent);
+      padding-left: 5px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-content, .contact-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.4s ease;
+      }
+
+      nav.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .logo-container {
+        text-align: center;
+      }
+
+      .logo-container img {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- En-tête du site -->
+  <!-- Header -->
   <header>
-    <h1>DANDARA</h1>
-    <p>"La Toile du Progrès" – Engagés pour le développement communautaire</p>
+    <div class="container header-content">
+      <div class="logo-container">
+        <img src="logo-ong-dandara.png" alt="Logo ONG DANDARA">
+        <div class="logo-text">
+          <h1>DANDARA</h1>
+          <h2>"LA TOILE DU PROGRÈS"</h2>
+        </div>
+      </div>
+      <button class="mobile-menu-btn" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#apropos">À Propos</a></li>
+          <li><a href="#missions">Missions</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Contenu principal -->
-  <main>
-    <section class="gallery">
-      <h2>Nos Réunions Communautaires</h2>
-      <p>Découvrez un moment fort de notre dernier rassemblement.</p>
-      
-      <!-- ✅ Image depuis le dossier "reunion" -->
-      <img src="reunion/premier-plan.jpg" alt="Photo de la réunion communautaire - Premier plan" />
-    </section>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <h2>Construisons un avenir durable ensemble</h2>
+      <p>DANDARA s'engage pour le développement communautaire durable et l'autonomisation des populations vulnérables.</p>
+      <div class="hero-buttons">
+        <a href="#projets" class="btn">Découvrir nos projets</a>
+        <a href="#contact" class="btn btn-outline">Nous soutenir</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Pied de page -->
+  <!-- À Propos -->
+  <section class="section" id="apropos">
+    <div class="container">
+      <div class="section-title">
+        <h2>À Propos de DANDARA</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Notre Histoire</h3>
+          <p>Fondée le 01 mars 2022, l'ONG DANDARA "La Toile du Progrès" œuvre pour le développement communautaire durable et l'autonomisation des populations vulnérables en Afrique de l'Ouest. Notre nom, inspiré de la toile d'araignée, symbolise la solidarité et l'interconnexion entre tous les membres de la société.</p>
+          <p>Nous croyons en l'autonomisation des communautés à travers des approches participatives et inclusives. Notre action se concentre sur plusieurs axes stratégiques :</p>
+          <ul>
+            <li>Environnement et assainissement</li>
+            <li>Atténuation des souffrances des populations en situation de vulnérabilité</li>
+            <li>Amélioration du taux de scolarisation des jeunes filles</li>
+            <li>Assistance aux veuves et orphelins en situation démunie</li>
+            <li>Lutte contre la faim</li>
+            <li>Assistance aux personnes victimes des catastrophes naturelles</li>
+            <li>Facilitation de l'accès à l'eau potable dans les zones rurales</li>
+            <li>Promotion des activités génératrices de revenus</li>
+            <li>Formation et insertion socioprofessionnelle des jeunes</li>
+          </ul>
+          <a href="#contact" class="btn">En savoir plus</a>
+        </div>
+        <div class="about-image">
+          <!-- ✅ Image chargée depuis le dossier "reunion" -->
+          <img src="reunion/premier-plan.jpg" alt="Équipe de DANDARA en réunion">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Missions -->
+  <section class="section missions" id="missions">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos Missions</h2>
+      </div>
+      <div class="missions-container">
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-tree"></i></div>
+          <div class="mission-content">
+            <h3>Environnement et Assainissement</h3>
+            <p>Mise en œuvre de programmes d'assainissement et de gestion durable des ressources naturelles.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-heart"></i></div>
+          <div class="mission-content">
+            <h3>Atténuation des Souffrances des Populations Vulnérables</h3>
+            <p>Soutien direct aux individus et familles touchées par la pauvreté, la maladie ou les catastrophes naturelles.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-book-open"></i></div>
+          <div class="mission-content">
+            <h3>Amélioration du Taux de Scolarisation des Jeunes Filles</h3>
+            <p>Programmes d'éducation pour favoriser l'accès équitable à l'école pour les filles.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-woman-holding-child"></i></div>
+          <div class="mission-content">
+            <h3>Assistance aux Veuves et Orphelins en Situation Démunie</h3>
+            <p>Soutien financier et moral aux veuves et orphelins pour leur autonomisation.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-bread-slice"></i></div>
+          <div class="mission-content">
+            <h3>Lutte contre la Faim</h3>
+            <p>Distribution alimentaire et promotion de l'agriculture durable pour réduire la faim.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-first-aid"></i></div>
+          <div class="mission-content">
+            <h3>Assistance aux Victimes de Catastrophes Naturelles</h3>
+            <p>Intervention rapide après incendies, inondations et autres désastres naturels.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-water"></i></div>
+          <div class="mission-content">
+            <h3>Accès à l'Eau Potable</h3>
+            <p>Réalisation de puits, forages et mini AEP pour faciliter l'accès à l'eau potable dans les zones rurales.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-hand-holding-usd"></i></div>
+          <div class="mission-content">
+            <h3>Promotion des Activités Génératrices de Revenus</h3>
+            <p>Initiatives pour créer des opportunités économiques durables et réduire la pauvreté.</p>
+          </div>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="mission-content">
+            <h3>Formation et Insertion Socioprofessionnelle des Jeunes</h3>
+            <p>Programmes de formation professionnelle pour lutter contre le chômage et la mendicité.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section class="section" id="projets">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos Projets</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet éducation">
+          </div>
+          <div class="project-content">
+            <h3>Écoles pour tous</h3>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> <span>Sénégal, Mali, Burkina Faso</span></div>
+            <p>Construction et rénovation d'écoles dans les zones rurales, formation des enseignants et fourniture de matériel pédagogique.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet santé">
+          </div>
+          <div class="project-content">
+            <h3>Santé pour les communautés</h3>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> <span>Côte d'Ivoire, Ghana</span></div>
+            <p>Mise en place de centres de santé communautaires et formation des agents de santé.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1592932400204-79b799658381?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet agriculture">
+          </div>
+          <div class="project-content">
+            <h3>Agriculture résiliente</h3>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> <span>Burkina Faso, Niger</span></div>
+            <p>Promotion de techniques agricoles durables et création de coopératives de producteurs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nous Contacter</h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Rejoignez notre mouvement</h3>
+          <p>Que vous soyez bénévole, partenaire ou simple citoyen engagé, votre soutien compte.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Adresse</h4>
+                <p>Niamey, Niger</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Téléphones</h4>
+                <p>00227 97 06 77 59</p>
+                <p>00227 97 12 13 93</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>ongdandara46@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Nom complet</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Sujet</label>
+              <input type="text" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2025 ONG DANDARA - Tous droits réservés | 
-    <a href="mailto:ongdandara46@gmail.com">Nous contacter</a>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>DANDARA</h3>
+          <p>"La Toile du Progrès" œuvre pour le développement communautaire durable et l'autonomisation des populations vulnérables en Afrique de l'Ouest depuis le 01 mars 2022.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Liens Rapides</h3>
+          <ul class="footer-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À Propos</a></li>
+            <li><a href="#missions">Nos Missions</a></li>
+            <li><a href="#projets">Nos Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Nos Partenaires</h3>
+          <ul class="footer-links">
+            <li><a href="#">UNICEF</a></li>
+            <li><a href="#">OMS</a></li>
+            <li><a href="#">PNUD</a></li>
+            <li><a href="#">Union Européenne</a></li>
+            <li><a href="#">Fondation Bill & Melinda Gates</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Restez informé de nos actions.</p>
+          <form>
+            <div class="form-group">
+              <input type="email" placeholder="Votre email" required>
+            </div>
+            <button type="submit" class="btn">S'abonner</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 DANDARA "La Toile du Progrès". Tous droits réservés.</p>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    // Menu mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          mainNav.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
